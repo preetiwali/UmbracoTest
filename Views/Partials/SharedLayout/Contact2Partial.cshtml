@@ -10,6 +10,15 @@
         flex-direction: column;
         align-items: center;
     }
+    @@media only screen and (max-width : 460px) {
+        .contactus {
+            flex-wrap: wrap;
+        }
+
+        .contact {
+            margin-top: 22px;
+        }
+    }
 </style>
 
 <div class="container">
@@ -27,7 +36,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2TS9HoPoekGVHK4bNYXm9jjmAqlRxwQk&callback=initMap&v=weekly"
             async></script>
 
-    <div style="display:flex;justify-content:space-around;padding:95px;">
+    <div class="contactus" style="display:flex;justify-content:space-around;padding:95px;">
         <div class="contact">
             <i><img src="~/images/email.png" width="39px" /></i>
             <h4>Email Us</h4>
