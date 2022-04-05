@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = "webtemplate.cshtml";
+}
+
+@* the fun starts here *@
+
+<!--/#main-slider-->
+	@{ Html.RenderAction("RenderCarousel","Home");}
+
+
+<!--/#feature-->
+	@{ Html.RenderAction("RenderFeatures","Home");}
+
+<!--/#recent-works-->
+	@{ Html.RenderAction("RenderRecentWorks","Home");}
+
+<!--/#services-->
+	@{ Html.RenderAction("RenderServices","Home");}

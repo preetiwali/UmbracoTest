@@ -1,0 +1,92 @@
+﻿<style>
+    #map {
+        height: 262px;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .contact {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<div class="container">
+    <div id="map"></div>
+    <script>
+        let map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 25.204849, lng: 55.270782 },
+                zoom: 8,
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2TS9HoPoekGVHK4bNYXm9jjmAqlRxwQk&callback=initMap&v=weekly"
+            async></script>
+
+    <div style="display:flex;justify-content:space-around;padding:95px;">
+        <div class="contact">
+            <i><img src="~/images/email.png" width="39px" /></i>
+            <h4>Email Us</h4>
+            <p>test@umbraco.com</p>
+        </div>
+        <div class="contact">
+            <i><img src="~/images/call.png"  width="37px"/></i>
+            <h4>Call Us</h4>
+            <p>+01234567890</p>
+        </div>
+        <div class="contact">
+            <i><img src="~/images/address.png" width="36px"/></i>
+            <h4>Visit Us</h4>
+            <p>XYZ,XYZ, Dubai, UAE</p>
+        </div>
+    </div>
+
+    <div class="large-title text-center" style="margin-top:40px!important">
+        <h2 style="font-size:34px!important">Get In Touch With Us</h2>
+        <p style="font-size:14px!important">Hey! Kindly send in your enquiries to us. We will be happy to provide you with the best online CMS solutions.</p>
+    </div>
+
+
+    <div class="row contact-wrap">
+        <div class="status alert alert-success" style="display: none"></div>
+        @using (Html.BeginUmbracoForm("HandleSubmitForm", "Contact2", FormMethod.Post))
+        {
+            <div class="col-sm-5 col-sm-offset-1">
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" name="name" id="name" class="form-control" pattern="^[a-zA-Z]+$" required="required">
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" name="email" id="email" class="form-control" required="required">
+                </div>
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" name="phone" id="phone" class="form-control" pattern="^[0-9]+$" required="required">
+                </div>
+                <div class="form-group">
+                    <label>Company Name *</label>
+                    <input type="text" name="companyName" id="companyName" class="form-control" required="required">
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label>Subject *</label>
+                    <input type="text" name="subject" id="subject" class="form-control" required="required">
+                </div>
+                <div class="form-group">
+                    <label>Message *</label>
+                    <textarea name="message" id="message" required="required" class="form-control" rows="8" required="required"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit Message</button>
+                </div>
+            </div>
+        }
+        @*</form>*@
+    </div><!--/.row-->
+</div><!--/.container-->

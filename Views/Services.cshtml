@@ -1,0 +1,9 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+    Layout = "webtemplate.cshtml";
+}
+
+@* the fun starts here *@
+
+<!--/#main-services-->
+@{ Html.RenderAction("RenderServices", "Services");}

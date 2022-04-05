@@ -1,0 +1,84 @@
+﻿
+@using UmbracoTest.Models
+@using Umbraco.Web.Models
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<List<NavList>>
+
+
+<header id="header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <div class="top-number">
+                        <p><i class="fa fa-phone-square"></i> +0123 456 78 90</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <div class="social">
+                        <ul class="social-share">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                        </ul>
+                        <div class="search">
+                            <form role="form">
+                                <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                                <i class="fa fa-search"></i>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.container-->
+    </div>
+    <!--/.top-bar-->
+
+    <nav class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/home"><span style="color: #ed7a42; font-size: 20px ">Umbraco Test</span></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <!--rmeove these for dynamic nav-->
+                    <li class="active"><a href="/home">Home</a></li>
+                    <li class="active"><a href="/aboutus">About Us</a></li>
+                    <li class="active"><a href="/services">Services</a></li>
+                    @*<li class="active"><a href="/contactus">Contact Us</a></li>*@
+                    <li class="active"><a href="/contact-us-2">Contact Us</a></li>
+                    <nav id="nav">
+                        @RenderSubItems(Model)
+                    </nav>
+                </ul>
+            </div>
+        </div>
+        <!--/.container-->
+    </nav>
+    <!--/nav-->
+
+</header>
+
+@helper RenderSubItems(List<NavList> listItems)
+{
+    if (listItems != null)
+    {
+        foreach (var item in listItems)
+        {
+            <li class="active"><a href="@item.Link.Url" target="@item.Link.Target">@item.Name</a></li>
+            if (item.HasSubNav)
+            {
+                @RenderSubItems(item.NavItems)
+            }
+        }
+    }
+}

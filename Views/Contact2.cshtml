@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+    <ContentModels.Contact2>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "webtemplate.cshtml";
+}
+
+@* the fun starts here *@
+
+    <section id="contact-page">
+        <div class="container">
+            @if (TempData["ContactUsSuccess"] != null && (bool)TempData["ContactUsSuccess"])
+            {
+            <div class="container" style="padding:45px">
+                <div style="display:flex; justify-content:center">
+                    <i><img src="~/images/tick.gif" /></i>
+                </div>
+
+                <div style="text-align:center;padding:45px">
+                    <h3>Thank you for sending in your enquiry. We will be contacting you soon!</h3><br />
+                    <h2>You will also be receiving an email about the enquiry.</h2><br />
+                    <h3>Wishing you a great day!!</h3><br /> <br />
+                </div>
+                    
+            </div>
+            }
+            else
+            {
+                Html.RenderAction("RenderContact2", "Contact2");
+            }
+        </div>
+    </section>
